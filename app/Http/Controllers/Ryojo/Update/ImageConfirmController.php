@@ -35,16 +35,7 @@ class ImageConfirmController extends Controller
         $tagsId = $request->session()->get('tagsId');
         $newImages = $request->images();//uploadクラスのインスタンス
 
-        $ryojoService->imgtmpStore($newImages);//imgtmpStoreメソッドでhashnameでストレージに保存
-        if($newImages){
-        foreach($newImages as $newImage)
-            {
-                $newImagesName[] = $newImage->hashName();
-            }
-        }
-        else{
-            $newImagesName = [];
-        }
+        $newImagesName = $ryojoService->imgStore($newImages);//アップロードされた画像のフルパス
 
         session()->put(['newImagesName'=>$newImagesName]);//アップロードファイルインスタンスはセッションに入れられないためファイル名
 

@@ -24,8 +24,7 @@ class ProfileUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'profile' => 'max:1000',      
+            'name' => 'required',     
         ];
     }
 
@@ -33,8 +32,6 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             "name.required" => "nameは必須項目です。",
-            "name.max:255" => "nameが長すぎます(255文字まで)。",
-            "profile.max:1000" => "profileが長すぎます(1000字まで)"
         ];
     }  
 }

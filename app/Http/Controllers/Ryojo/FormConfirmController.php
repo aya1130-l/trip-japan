@@ -51,16 +51,7 @@ class FormConfirmController extends Controller
             }
 
 
-        $ryojoService->imgtmpStore($newImages);//画像のリサイズと、hashnameでストレージに保存
-        if($newImages){
-            foreach($newImages as $newImage)
-            {
-                $newImagesName[] = $newImage->hashName();
-            }
-        }
-        else{
-            $newImagesName = [];
-        }
+        $newImagesName = $ryojoService->imgStore($newImages);//アップロードされた画像のフルパス
 
 
         session()->put(['title'=>$title,'content'=>$content,'userId'=>$userId,'prefsName'=>$prefsName, 

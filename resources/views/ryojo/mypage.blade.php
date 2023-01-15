@@ -3,8 +3,12 @@
     <div class="invisible md:visible z-20 fixed w-1/5 min-h-screen bg-[#001a1a]">
         <ul class="mx-8 my-12 text-white text-[32px]">
             @if(!Auth::check())
-                <li><a href="{{ route('register.precheck') }}" class="block py-2 mb-4 rounded bg-opacity-80 hover:bg-opacity-100 bg-gray-100 text-center text-[#001a1a] text-[16px]">新規登録</a></li>
-                <li><a href="{{ route('login') }}" class="block py-2 mb-8 rounded bg-opacity-80 hover:bg-opacity-100 bg-gray-100 text-center text-[#001a1a] text-[16px]">ログイン</a></li>
+            <li><a href="{{ route('register.precheck') }}" class="block py-2 mb-4 rounded bg-opacity-80 hover:bg-opacity-100 bg-gray-100 text-center text-[#001a1a] text-[16px]">新規登録</a></li>
+                <li><a href="{{ route('login') }}" class="block py-2 mb-4 rounded bg-opacity-80 hover:bg-opacity-100 bg-gray-100 text-center text-[#001a1a] text-[16px]">ログイン</a></li>
+                <li><form action="{{ route('guestlogin') }}" method="post">
+                    @csrf
+                    <button type="submit" class="block w-full py-2 mb-8 rounded bg-opacity-80 hover:bg-opacity-100 bg-gray-100 text-center text-[#001a1a] text-[16px]">ゲストログイン</button>
+                </form></li>
             @endif
             <li class="mb-4 hover:underline decoration-1 truncate"><a href="{{ route('ryojo.index') }}"><i class="fa fa-home text-white" aria-hidden="true"></i> Home</a></li></label>
             <li class="mb-4 hover:underline decoration-1 truncate"><a href="{{ route('ryojo.mypage') }}"><i class="fa fa-user text-white" aria-hidden="true"></i> MyPage</a></li>
@@ -22,23 +26,30 @@
         @if(Auth::check())
         <form action="{{ route('logout') }}" method="post"><button type="submit" class="absolute right-[5%] top-[2%] text-white">ログアウト</button></form>
         @else
-        <div class="absolute top-[15px] right-[10px]">
-            <a href="{{ route('register.precheck') }}" class="z-10 mr-4 text-white">新規登録</a>
-            <a href="{{ route('login') }}" class="z-10 mr-4 text-white">ログイン</a> 
+        <div class="flex items-center absolute top-[15px] right-[10px]">
+            <a href="{{ route('register.precheck') }}" class="z-10 mr-4 text-white text-sm">新規登録</a>
+            <a href="{{ route('login') }}" class="z-10 mr-4 text-white text-sm">ログイン</a>
+            <form action="{{ route('guestlogin') }}" method="post">
+                @csrf
+                <button type="submit" class="z-10 mr-4 text-yellow-400 text-sm">ゲストログイン</button>
+            </form>
         </div>
         @endif
     </div>
 
     <!--profile-->
     <div class="md:absolute md:left-[20%] md:top-[4%] lg:w-[725px] md:w-3/5 mt-5 mx-4 md:mx-10 mb-20">
-        <div class="mb-8 bg-[#ccc1b8] border-2 rounded-lg">
+        <div class="bg-[#ccc1b8] border-2 rounded-lg">
             <div class="bg-white mx-4 my-4 rounded-sm">
                 <div class="flex items-center px-3 py-3">
                     <p class="w-1/3 break-words text-center text-gray-500 md:text-[24px] text-[18px]">{{ $user->name }}</p>
                     <p class="border-l min-h-[100px] mx-4"></p>
                     <p class="w-2/3 text-gray-500">{{ $user->profile }}</p>
                 </div>
-            </div>
+            </div>  
+        </div>
+        <div class="text-right">
+            <a href="{{ route('ryojo.mypage.Updateform') }}" class="inline-block ml-auto mb-8 text-sm text-gray-500 underline">編集する</a>
         </div>
 
         @foreach($myMemories as $myMemory)
@@ -113,6 +124,7 @@
                          </div>
                         @else
                         @endif
+                        <div class="ml-auto text-gray-800 text-sm">{{ $myMemory->created_at }}</div>
                     </div>   
                 </div>                                
             </div>            
@@ -146,6 +158,7 @@ function ajax() {
             return response.json();
         })
         .then(data => { 
+            e.target.classList.toggle('text-red-500');
             e.target.nextElementSibling.textContent = data.bookmarksCount;
         })
         .catch(error => {

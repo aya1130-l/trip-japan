@@ -18,7 +18,7 @@
             <!-- Profile -->
             <div class="mt-4">
                 <x-label for="profile" :value="__('Profile')" />
-                <x-input id="profile" class="block mt-1 w-full" type="text" name="profile" :value="old('profile')" required autofocus />
+                <textarea id="profile" class="block mt-1 w-full h-28 rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" type="text" name="profile" :value="old('profile')" required autofocus></textarea>
             </div>
 
             <div class="flex items-center justify-end mt-4">

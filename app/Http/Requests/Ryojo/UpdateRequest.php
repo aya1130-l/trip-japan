@@ -34,10 +34,6 @@ class UpdateRequest extends FormRequest
         return [
             "title.required" => "titleは必須項目です。",
             "content.required" => "contentは必須項目です。",
-            "images.required" => "imageは必須項目です。",
-            "images.max:10" => "選択できる画像は10枚までです。",
-            "images.mimes:jpeg,png,jpg,svg" => "指定されたファイルが画像(jpeg,jpg,png,svg)ではありません。",
-            "images.max:2048" => "画像のサイズが大きすぎます。"
         ];
     }  
 

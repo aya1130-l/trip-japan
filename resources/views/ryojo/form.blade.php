@@ -212,6 +212,8 @@ function setVaPrefectures() {
 }
 </script>
 
+
+
 <style>
     [x-cloak] { display: none; }
 </style>

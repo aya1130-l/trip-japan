@@ -4,8 +4,12 @@
     <div class="invisible md:visible z-20 fixed w-1/5 min-h-screen bg-[#001a1a]">
         <ul class="mx-8 my-12 text-white text-[32px]">
             @if(!Auth::check())
-                <li><a href="{{ route('register.precheck') }}" class="block py-2 mb-4 rounded bg-opacity-80 hover:bg-opacity-100 bg-gray-100 text-center text-[#001a1a] text-[16px]">新規登録</a></li>
-                <li><a href="{{ route('login') }}" class="block py-2 mb-8 rounded bg-opacity-80 hover:bg-opacity-100 bg-gray-100 text-center text-[#001a1a] text-[16px]">ログイン</a></li>
+            <li><a href="{{ route('register.precheck') }}" class="block py-2 mb-4 rounded bg-opacity-80 hover:bg-opacity-100 bg-gray-100 text-center text-[#001a1a] text-[16px]">新規登録</a></li>
+                <li><a href="{{ route('login') }}" class="block py-2 mb-4 rounded bg-opacity-80 hover:bg-opacity-100 bg-gray-100 text-center text-[#001a1a] text-[16px]">ログイン</a></li>
+                <li><form action="{{ route('guestlogin') }}" method="post">
+                    @csrf
+                    <button type="submit" class="block w-full py-2 mb-8 rounded bg-opacity-80 hover:bg-opacity-100 bg-gray-100 text-center text-[#001a1a] text-[16px]">ゲストログイン</button>
+                </form></li>
             @endif
             <li class="mb-4 hover:underline decoration-1 truncate"><a href="{{ route('ryojo.index') }}"><i class="fa fa-home text-white" aria-hidden="true"></i> Home</a></li></label>
             <li class="mb-4 hover:underline decoration-1 truncate"><a href="{{ route('ryojo.mypage') }}"><i class="fa fa-user text-white" aria-hidden="true"></i> MyPage</a></li>
@@ -23,9 +27,13 @@
         @if(Auth::check())
         <form action="{{ route('logout') }}" method="post"><button type="submit" class="absolute right-[5%] top-[2%] text-white">ログアウト</button></form>
         @else
-        <div class="absolute top-[15px] right-[10px]">
-            <a href="{{ route('register.precheck') }}" class="z-10 mr-4 text-white">新規登録</a>
-            <a href="{{ route('login') }}" class="z-10 mr-4 text-white">ログイン</a> 
+        <div class="flex items-center absolute top-[15px] right-[10px]">
+            <a href="{{ route('register.precheck') }}" class="z-10 mr-4 text-white text-sm">新規登録</a>
+            <a href="{{ route('login') }}" class="z-10 mr-4 text-white text-sm">ログイン</a>
+            <form action="{{ route('guestlogin') }}" method="post">
+                @csrf
+                <button type="submit" class="z-10 mr-4 text-yellow-400 text-sm">ゲストログイン</button>
+            </form>
         </div>
         @endif
     </div>
@@ -83,6 +91,7 @@
                         </form>
                     @else
                     @endif
+                    <div class="ml-auto text-gray-800 text-sm">{{ $memory->created_at }}</div>
                 </div>                                    
                 </div>
             </div>                                
@@ -128,6 +137,10 @@ function ajax() {
     }
 }
 </script>
+
+<style>
+    [x-cloak] { display: none; }
+</style>
 
 
 

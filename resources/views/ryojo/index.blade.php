@@ -50,7 +50,7 @@
 
             <div x-data="setPrefectures()" class="my-3">
                 <a tabindex="0" @click="all = ! all" class="relative text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center pointer-events-auto cursor-pointer">都道府県<svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
-                <span x-text="prefectures" class="test-sm text-gray-800"></span>
+                <span x-text="prefectures" class="text-gray-800 text-sm"></span>
                 <div x-show="all" x-cloak>
                     <div class="bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
                         <ul class="py-1 divide-y divide-gray-100 text-sm text-gray-700 dark:text-gray-200">
@@ -228,15 +228,17 @@
                          </div>
                         @else
                         @endif
+
+                    <div class="ml-auto text-gray-800 text-sm">{{ $memory->created_at }}</div>
                 </div>   
             </div>                               
         </div>           
         @endforeach
     </div> 
 
-
-    <div class="invisible lg:visible absolute top-0 right-0 bg-gray-400 w-1/4 min-h-screen">
-        <p class="text-center text-white bg-gray-800 px-5 py-1 rounded">人気の投稿</p>
+    <!--人気の投稿-->
+    <div class="invisible lg:visible absolute top-0 right-0 bg-gray-300 w-1/4 min-h-screen">
+        <p class="text-center text-white bg-gray-400 px-5 py-1 rounded">人気の投稿</p>
         @foreach($popularMemories as $popularMemory)
         <div class="px-4 py-4 mx-4 my-4 rounded-lg bg-white">
             <a href="{{ route('ryojo.memory',['memoryId' => $popularMemory->id]) }}" class="block text-gray-800 hover:underline truncate whitespace-nowrap">{{ $popularMemory->title }}</a>

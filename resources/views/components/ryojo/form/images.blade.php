@@ -56,8 +56,8 @@
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d');
           //どのサイズで保存するか
-          canvas.width = 280;
-          canvas.height = 210;
+          canvas.width = 400;
+          canvas.height = 300;
           const canvasWidth = canvas.width;
           const canvasHeight = canvas.height;
           const canvasAspect = canvasWidth/canvasHeight;

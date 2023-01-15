@@ -10,12 +10,16 @@ use App\Models\Bookmark;
 use App\Models\Prefecture;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use InterventionImage;
+use App\Modules\ImageUpload\ImageManagerInterface;
 
 
 
 class RyojoService
 {
+    //本番環境ではcloudinaryに画像をアップロードするため
+    public function __construct(private ImageManagerInterface $imageManager)
+    {}
+
     public function getMemories()
     {
         return Memory::withCount('bookmarks')->with(['tags','images','prefectures'])->orderBy('created_at', 'DESC')->get(); //クエリビルダで降順にしたあとget()で取得,各eloquentモデルはクエリビルダ使用可能
@@ -111,28 +115,24 @@ class RyojoService
         });
     }
 
-    
-   
 
-    //imageをtmpフォルダに保存(投稿前確認用)
-    public function imgtmpStore($images)//file型はarray型に変換できないからここタイプヒンティングでarrayにしない
+    //image保存(投稿前確認用)
+    public function imgStore($images)//file型はarray型に変換できないからここタイプヒンティングでarrayにしない
     {
-        DB::transaction(function () use ($images) {
             foreach($images as $image) 
                 {
-                    Storage::putFileAs('public/images/tmp',$image, $image->hashName());
-                }       
-        });
+                    $name = $this->imageManager->save($image);//任意のファイル名で画像保存後、フルパス(publicId)を返す
+                    $imagesName[] = $name;
+                 } 
+            return  $imagesName;    
     }
 
-    //投稿修正時にtmpフォルダのimageを削除
+    //投稿修正時imageを削除
     public function tmpimgdelete($newImagesName)
     {
-        DB::transaction(function () use ($newImagesName){
             foreach($newImagesName as $newImageName){
-                Storage::delete('public/images/tmp/'.$newImageName);
-            }
-        });
+                $this->imageManager->delete($newImageName);
+        }
     }
         
 
@@ -149,11 +149,9 @@ class RyojoService
             foreach($newImagesName as $newImageName)
              { 
                 $imageModel = new Image;
-                $imageModel->name = $newImageName;
+                $imageModel->name = $newImageName;//cloudinaryにおける画像ファイルのフルパス(publicId)
                 $imageModel->save();
                 $memory->images()->attach($imageModel->id); //新たな紐付け
-
-                Storage::move('public/images/tmp/'.$newImageName, 'public/images/memory/'.$newImageName);//tmpフォルダからimagesフォルダに移動
             }
             
                 //memory保存後にtagを中間テーブルへ
@@ -208,12 +206,9 @@ class RyojoService
             //以前のimage削除
             $memory->images()->each(function ($image) use ($memory)
             {
-                $filePath='public/images/memory/'.$image->name;
-                if(Storage::exists($filePath)){
-                    Storage::delete($filePath);
-                }
+                $this->imageManager->delete($image->name);//画像ファイル削除
                 $memory->images()->detach($image->id); //紐付を削除
-                $image->delete(); //画像削除
+                $image->delete(); //$imageのレコード削除
 
             });
 
@@ -224,8 +219,6 @@ class RyojoService
                 $imageModel->name = $newImageName;
                 $imageModel->save();
                 $memory->images()->attach($imageModel->id); //新たな紐付け
-
-                Storage::move('public/images/tmp/'.$newImageName, 'public/images/memory/'.$newImageName);//tmpフォルダからimagesフォルダに移動
             }
             
             //memory保存後にtagを中間テーブルへデータ追加
@@ -250,16 +243,12 @@ class RyojoService
          DB::transaction(function () use ($memoryId) {
              $memory = Memory::where('id', $memoryId)->firstOrFail();
              $memory->images()->each(function ($image) use ($memory){//eachメソッドでコレクションの中身取り出し、中身をそのままコールバックすることができる
-                 $filePath='public/images/memory/'.$image->name;
-                 if(Storage::exists($filePath)){
-                     Storage::delete($filePath);
-                 }
+                $this->imageManager->delete($image->name);//画像ファイル削除
                  $memory->images()->detach($image->id); //紐付を削除
-                 $image->delete(); //画像削除
+                 $image->delete(); //$imageのレコード削除
              });
              $memory->delete(); //メモリー削除
          });
      }
-    
 
 }

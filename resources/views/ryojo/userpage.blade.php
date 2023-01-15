@@ -113,6 +113,7 @@
                                 </div>
                             @else
                             @endif
+                            <div class="ml-auto text-gray-800 text-sm">{{ $userMemory->created_at }}</div>
                         </div>   
                     </div>
                 </div>                                           
@@ -155,3 +156,7 @@ function ajax() {
     }
 }
 </script>
+
+<style>
+    [x-cloak] { display: none; }
+</style>

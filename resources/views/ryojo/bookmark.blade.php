@@ -104,6 +104,7 @@
                                 </div>
                             @else
                             @endif
+                            <div class="ml-auto text-gray-800 text-sm">{{ $bookmarkMemory->created_at }}</div>
                     </div>   
                 </div>                               
             </div>           
@@ -137,6 +138,7 @@ function ajax() {
             return response.json();
         })
         .then(data => { 
+            e.target.classList.toggle('text-red-500');
             e.target.nextElementSibling.textContent = 'お気に入り'+data.bookmarksCount;
         })
         .catch(error => {
