@@ -20,7 +20,7 @@ class IndexController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(RyojoService $ryojoservice, SearchRequest $searchrequest)
+    public function __invoke(RyojoService $ryojoservice, Request $request, SearchRequest $searchrequest)
     {
         $tags = $ryojoservice->getTags()->sort();
         $Tohokuprefs = $ryojoservice->getTohokuPrefs();
