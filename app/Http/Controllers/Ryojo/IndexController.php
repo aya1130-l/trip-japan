@@ -9,6 +9,7 @@ use App\Models\Memory;
 use App\Models\Tag;
 use App\Models\Prefecture;
 use App\Http\Requests\Ryojo\SearchRequest;
+use Illuminate\Http\Request;
 
 
 class IndexController extends Controller
