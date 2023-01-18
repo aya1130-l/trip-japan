@@ -24,14 +24,14 @@ class ProfileUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',     
+            'name' => 'required'  
         ];
     }
 
     public function messages()
     {
         return [
-            "name.required" => "nameは必須項目です。",
+            "name.required" => "nameは必須項目です。"
         ];
     }  
 }

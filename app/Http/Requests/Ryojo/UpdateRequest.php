@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'content' => 'required',
+            'content' => 'required'
              ];
     }
 
@@ -33,7 +33,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             "title.required" => "titleは必須項目です。",
-            "content.required" => "contentは必須項目です。",
+            "content.required" => "contentは必須項目です。"
         ];
     }  
 
