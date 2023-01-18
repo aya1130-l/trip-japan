@@ -9,7 +9,7 @@ use App\Models\Memory;
 use App\Models\Tag;
 use App\Models\Prefecture;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Ryojo\SearchRequest;
 
 
 class IndexController extends Controller
@@ -20,7 +20,7 @@ class IndexController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(RyojoService $ryojoservice, FormRequest $request)
+    public function __invoke(RyojoService $ryojoservice, SearchRequest $request)
     {
         $tags = $ryojoservice->getTags()->sort();
         $Tohokuprefs = $ryojoservice->getTohokuPrefs();
