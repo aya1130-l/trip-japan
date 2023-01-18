@@ -42,4 +42,36 @@ class CreateRequest extends FormRequest
             "images.max:2048" => "画像のサイズが大きすぎます。"
         ];
     }  
+
+    public function content()
+    {
+        return $this -> input('content');
+    }
+
+    public function title()
+    {
+        return $this -> input('title');
+    }
+
+    public function userId()
+    {
+        return $this -> user()->id; //requestのuser()は今ログインしているユーザー情報を返してくれる
+        //webガードがデフォルトで設定されており、providerの設定からusersテーブルの情報をeloquentモデルにして返す
+    }
+
+    public function tagsId():array
+    {
+        return $this -> input('tag.*',[]); //formのcheckboxの中身,valueにtagのidを指定しているのでこの場合はid取得
+    }
+
+    public function prefsName():array
+    {
+        return $this -> input('pref.*',[]);
+    }
+
+    public function images():array
+    {
+        return $this -> file('images',[]); //第一引数にinputタグのname属性、第二引数にデフォルト値ぽいよ？？
+    }
+    
 }

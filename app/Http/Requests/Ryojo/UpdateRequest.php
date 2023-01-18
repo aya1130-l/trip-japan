@@ -37,4 +37,30 @@ class UpdateRequest extends FormRequest
         ];
     }  
 
+    public function content()
+    {
+        return $this -> input('content'); //input:指定したキー名の値を取得
+    }
+
+    public function title()
+    {
+        return $this -> input('title');
+    }
+
+    public function userId()
+    {
+        return $this -> user()->id; //requestのuser()は今ログインしているユーザー情報を返してくれる
+        //webガードがデフォルトで設定されており、providerの設定からusersテーブルの情報をeloquentモデルにして返す
+    }
+
+    public function tagsId():array
+    {
+        return $this -> input('tag.*',[]); //formのcheckboxの中身,valueにtagのidを指定しているのでこの場合はid取得
+    }
+
+    public function prefsName():array
+    {
+        return $this -> input('pref.*',[]);
+    }
+
 }

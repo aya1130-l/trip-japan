@@ -34,4 +34,15 @@ class ProfileUpdateRequest extends FormRequest
             "name.required" => "nameは必須項目です。"
         ];
     }  
+
+    public function name()
+    {
+        return $this -> input('name');
+    }
+
+    public function profile()
+    {
+        return $this -> input('profile');
+    }
 }
+

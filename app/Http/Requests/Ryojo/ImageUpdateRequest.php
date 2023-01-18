@@ -38,4 +38,9 @@ class ImageUpdateRequest extends FormRequest
             "images.max:2048" => "画像のサイズが大きすぎます。"
         ];
     }  
+
+    public function images():array
+    {
+        return $this -> file('images',[]); //第一引数にinputタグのname属性、第二引数にデフォルト値ぽいよ？？
+    }
 }
