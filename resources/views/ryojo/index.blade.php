@@ -307,6 +307,8 @@ function ajax() {
 }
 </script>
 
+@push
 <style>
     [x-cloak] { display: none !important;}
 </style>
+@endpush
