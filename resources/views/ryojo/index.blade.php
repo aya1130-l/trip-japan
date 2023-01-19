@@ -259,7 +259,12 @@
     </div>
 </x-layoutgray>
 
+<style>
+    [x-cloak] { display: none !important;}
+</style>
+
 <script>
+    
 window.addEventListener('pageshow',()=>{
 	if(window.performance.navigation.type==2) location.reload();
 });
@@ -308,6 +313,4 @@ function ajax() {
 </script>
 
 
-<style>
-    [x-cloak] { display: none !important;}
-</style>
+
