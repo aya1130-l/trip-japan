@@ -58,7 +58,7 @@ class Handler extends ExceptionHandler
             if($request->is('logout')) {
                 Auth::logout();
             }
-        return redirect()->route('ryojo.home');
+        return redirect()->route('ryojo.index');
         }
  
         return parent::render($request, $exception);
