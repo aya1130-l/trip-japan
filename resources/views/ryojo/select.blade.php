@@ -1,4 +1,3 @@
-
 <x-layoutgray title="旅情　-美しい日本を投稿しよう- 画像編集確認">
 <p class="text-center mt-24  text-lg text-gray-800">画像を編集しますか？</p>
     <div class="md:w-[650px] w-11/12 h-[400px] m-auto mt-4 border-4 border-gray-400 bg-white rounded-lg">
