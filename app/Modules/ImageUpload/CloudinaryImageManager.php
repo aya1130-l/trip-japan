@@ -15,7 +15,7 @@ class CloudinaryImageManager implements ImageManagerInterface
     /**
      * @throws \Cloudinary\Api\Exception\ApiError
      */
-    public function save($file): string//publicIdを返す
+    public function save($file): string//uploadして、publicIdを返す
     {
         return $this->cloudinary
             ->uploadApi()

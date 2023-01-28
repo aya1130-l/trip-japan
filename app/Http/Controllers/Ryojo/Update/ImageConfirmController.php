@@ -35,9 +35,9 @@ class ImageConfirmController extends Controller
         $tagsId = $request->session()->get('tagsId');
         $newImages = $request->images();//uploadクラスのインスタンス
 
-        $newImagesName = $ryojoService->imgStore($newImages);//アップロードされた画像のフルパス
+        $newImagesPath = $ryojoService->imgStore($newImages);//アップロードされた画像のフルパス
 
-        session()->put(['newImagesName'=>$newImagesName]);//アップロードファイルインスタンスはセッションに入れられないためファイル名
+        session()->put(['newImagesPath'=>$newImagesPath]);//アップロードファイルインスタンスはセッションに入れられないためファイル名
 
         if($tagsId){
         foreach($tagsId as $tagId)//投稿編集時に初期値を表示するために必要
@@ -50,18 +50,14 @@ class ImageConfirmController extends Controller
             $tags = [];
         }
 
-        if($prefsName){
         foreach($prefsName as $prefName)
             {
                 $pref = Prefecture::where('prefectures',$prefName)->firstOrFail();
                 $prefs[] = $pref;
             }
-        }
-        else{
-            $prefs = [];
-        }
+
         $memory = Memory::where('id',$memoryId)->firstOrFail();//編集中のmemory
-        return view('ryojo.imageconfirm')->with('memory',$memory)->with('title',$title)
+        return view('ryojo.ud-imageconfirm')->with('memory',$memory)->with('title',$title)
                                         ->with('content',$content)->with('userId',$userId)
                                         ->with('tags',$tags)->with('prefs',$prefs)
                                         ->with('newImages',$newImages)

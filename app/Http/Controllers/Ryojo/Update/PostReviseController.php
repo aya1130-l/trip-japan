@@ -24,8 +24,8 @@ class PostReviseController extends Controller
         $userId = $request->session()->get('userId');
         $selectedprefsName = $request->session()->get('prefsName');
         $selectedtagsId = $request->session()->get('tagsId');
-        $newImagesName = $request->session()->get('newImagesName');
-        $ryojoservice->tmpimgdelete($newImagesName);
+        $newImagesPath = $request->session()->get('newImagesPath');
+        $ryojoservice->tmpimgdelete($newImagesPath);
 
         $tags = $ryojoservice->getTags();
         $prefs = $ryojoservice->getPrefs();
@@ -39,7 +39,7 @@ class PostReviseController extends Controller
 
         $memory = Memory::where('id',$memoryId)->firstOrFail();
 
-        return view('ryojo.textform')->with('memory',$memory)
+        return view('ryojo.ud-textform')->with('memory',$memory)
                                     ->with('title',$title)
                                     ->with('content',$content)->with('tags',$tags)                          
                                     ->with('prefs',$prefs)->with('selectedtagsId',$selectedtagsId)                                   

@@ -24,7 +24,7 @@ class CreateController extends Controller
             $request->session()->get('title'),
             $request->session()->get('content'),
             $request->session()->get('userId'),
-            $request->session()->get('newImagesName'),
+            $request->session()->get('newImagesPath'),
             $request->session()->get('prefsName'),
             $request->session()->get('tagsId')
         );

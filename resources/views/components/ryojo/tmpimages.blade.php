@@ -1,14 +1,14 @@
 @props([
-    'newImagesName' => []
+    'newImagesPath' => []
 ])
 
-@if(count($newImagesName) > 0)
+@if(count($newImagesPath) > 0)
 <div class="mt-8">
     <div class="hscroll flex items-center justify-center mt-2">
 		<i class="left arrow cursor-pointer fa fa-chevron-left md:mr-10 mr-5 text-gray-500 md:text-[50px] text-[20px]" aria-hidden="true"></i><!--矢印-->
         <ul class="w-[250px] text-[0px]">
-            @foreach($newImagesName as $newImageName)
-		    <li><img alt="{{ $newImageName }}" class="object-contain w-[250px] mt-5" src="{{ image_url($newImageName) }}"></li>
+            @foreach($newImagesPath as $newImagePath)
+		    <li><img alt="{{ $newImagePath }}" class="object-contain w-[250px] mt-5" src="{{ image_url($newImagePath) }}"></li>
             @endforeach
 	    </ul>
 		<i class="right arrow cursor-pointer fa fa-chevron-right md:ml-10 ml-5 text-gray-500 md:text-[50px] text-[20px]" aria-hidden="true"></i><!--矢印-->

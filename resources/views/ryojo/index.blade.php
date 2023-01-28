@@ -296,11 +296,11 @@ function ajax() {
         },
         body: JSON.stringify({ memory_id:memoryId }),
         redirect: 'error',
+        })//Responseオブジェクトを結果にもつPromiseオブジェクトが返り値
+        .then(response => {//Promiseオブジェクトのthenメソッド
+            return response.json();//responseオブジェクトから、json()メソッドでjson本体の内容を抽出
         })
-        .then(response => {
-            return response.json();
-        })
-        .then(data => { 
+        .then(data => { //json()で解析した結果をdataとして受け取る
             e.target.classList.toggle('text-red-500');
             e.target.nextElementSibling.textContent = data.bookmarksCount;
         })
@@ -309,7 +309,7 @@ function ajax() {
         });//戻り値はpromise,responseインターフェースのメソッド
      },       
     }
-}
+}//thenの代わりにasyncとawaitを使って記述することもできる
 </script>
 
 

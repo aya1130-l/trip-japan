@@ -25,9 +25,7 @@ class CreateRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'content' => 'required',
-            'images' => 'required|array|max:10',
-            'images.*' => 'image|mimes:jpeg,png,jpg,svg|max:2048' //配列の中身に対するバリデーション
+            'pref' => 'required',
              ];
     }
 
@@ -35,11 +33,7 @@ class CreateRequest extends FormRequest
     {
         return [
             "title.required" => "titleは必須項目です。",
-            "content.required" => "contentは必須項目です。",
-            "images.required" => "imageは必須項目です。",
-            "images.max:10" => "選択できる画像は10枚までです。",
-            "images.mimes:jpeg,png,jpg,svg" => "指定されたファイルが画像(jpeg,jpg,png,svg)ではありません。",
-            "images.max:2048" => "画像のサイズが大きすぎます。"
+            "pref.required" => "都道府県を選んでください。",
         ];
     }  
 
@@ -67,11 +61,6 @@ class CreateRequest extends FormRequest
     public function prefsName():array
     {
         return $this -> input('pref.*',[]);
-    }
-
-    public function images():array
-    {
-        return $this -> file('images',[]); //第一引数にinputタグのname属性、第二引数にデフォルト値ぽいよ？？
     }
     
 }

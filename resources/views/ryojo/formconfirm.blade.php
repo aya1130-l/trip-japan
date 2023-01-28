@@ -20,7 +20,7 @@
                 @endforeach
             </div>
         
-            <x-ryojo.tmpimages :newImagesName="$newImagesName"/>
+            <x-ryojo.tmpimages :newImagesPath="$newImagesPath"/>
             <p class="mx-2 mt-10 break-words whitespace-pre-wrap text-gray-800">{{ $content }}</p>  
         </div>
     </div>

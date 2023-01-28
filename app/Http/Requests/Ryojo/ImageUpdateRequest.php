@@ -39,8 +39,8 @@ class ImageUpdateRequest extends FormRequest
         ];
     }  
 
-    public function images():array
+    public function images()
     {
-        return $this -> file('images',[]); //第一引数にinputタグのname属性、第二引数にデフォルト値ぽいよ？？
+        return $this -> file('images',[]); //第一引数にinputタグのname属性、第二引数にデフォルト値
     }
 }

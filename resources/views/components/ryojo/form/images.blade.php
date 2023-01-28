@@ -41,13 +41,6 @@
         document.getElementById('tmpimage').classList.remove('hidden');
       };
 
-      if(output.childElementCount > 10){
-        document.getElementById('imgalert').classList.remove('hidden');
-      }
-      else{
-        document.getElementById('imgalert').classList.add('hidden');
-      };
-
       for (j = 0; j < obj.files.length; j++) {//canvasに描画、描画した内容を出力して送信する
         const image = new Image();//imageには引数でwidth,heightの指定可能、指定しなければnatural
         const fileReader = new FileReader();
@@ -80,7 +73,7 @@
             sw = canvasWidth / ratio;
             sh = imageHeight;
           }
-          ctx.drawImage(image, sx, sy, sw, sh, 0, 0, canvasWidth, canvasHeight);
+          ctx.drawImage(image, sx, sy, sw, sh, 0, 0, canvasWidth, canvasHeight);//対象のimageをリサイズ
           resizedImgUrl = canvas.toDataURL('image/png');//base64作成
           tmpimage.innerHTML += '<li><img src="' + resizedImgUrl + '" class="w-[250px] mt-5"></li>';
 
@@ -110,7 +103,6 @@
         fileReader.readAsDataURL(obj.files[j]);
       }
     }
-
 
     //画像リセット
     function reset(){
@@ -147,13 +139,10 @@
 	scroll-behavior:smooth;
 }
 
-
 .hscroll li {
 	list-style:none;
 	display:inline-block;
 }
-
-
 
 @media screen and (max-width:480px) {
 	.hscroll ul {

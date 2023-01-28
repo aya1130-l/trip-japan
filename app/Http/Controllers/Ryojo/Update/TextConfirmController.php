@@ -43,19 +43,14 @@ class TextConfirmController extends Controller
             $tags = [];
         }
 
-        if($prefsName){
         foreach($prefsName as $prefName)
             {
                 $pref = Prefecture::where('prefectures',$prefName)->firstOrFail();
                 $prefs[] = $pref;    
             }
-        }
-        else{
-            $prefs = [];
-        }
 
         $memory = Memory::where('id',$memoryId)->firstOrFail();
-        return view('ryojo.textconfirm')->with('memory',$memory)->with('title',$title)
+        return view('ryojo.ud-textconfirm')->with('memory',$memory)->with('title',$title)
                                         ->with('content',$content)->with('userId',$userId)
                                         ->with('tags',$tags)->with('prefs',$prefs);
 

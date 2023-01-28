@@ -29,7 +29,7 @@ class FormController extends Controller
         $title="";
         $content="";
         
-        return view('ryojo.form')->with('tags',$tags)->with('Tohokuprefs',$Tohokuprefs)
+        return view('ryojo.textform')->with('tags',$tags)->with('Tohokuprefs',$Tohokuprefs)
                                 ->with('Kantoprefs',$Kantoprefs)->with('Chubuprefs',$Chubuprefs)
                                 ->with('Kinkiprefs',$Kinkiprefs)->with('Chugokuprefs',$Chugokuprefs)
                                 ->with('Shikokuprefs',$Shikokuprefs)->with('Kyusyuprefs',$Kyusyuprefs)

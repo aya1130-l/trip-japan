@@ -36,7 +36,7 @@ class TextReviseController extends Controller
 
         $memory = Memory::where('id',$memoryId)->firstOrFail();
 
-        return view('ryojo.textform')->with('memory',$memory)
+        return view('ryojo.ud-textform')->with('memory',$memory)
                                     ->with('title',$title)
                                     ->with('content',$content)->with('tags',$tags)                          
                                     ->with('prefs',$prefs)->with('selectedtagsId',$selectedtagsId)                                   

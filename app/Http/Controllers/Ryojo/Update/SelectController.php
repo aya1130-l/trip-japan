@@ -34,7 +34,7 @@ class SelectController extends Controller
 
         //画像編集するか確認する画面へ、編集中のmemoryの画像を表示
         $memory = Memory::where('id',$memoryId)->firstOrFail();
-        return view('ryojo.select')->with('memory',$memory);
+        return view('ryojo.ud-select')->with('memory',$memory);
 
     }
 }

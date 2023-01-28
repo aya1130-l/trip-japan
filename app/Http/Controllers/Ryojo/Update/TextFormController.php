@@ -44,17 +44,12 @@ class TextFormController extends Controller
         }
         
         $selectedprefs = $memory->prefectures->toArray();
-        if($selectedprefs){
-            foreach($selectedprefs as $selectedpref){
+        foreach($selectedprefs as $selectedpref){
                 $selectedprefsName[] = $selectedpref['prefectures']; //選択済みのprefidを配列に放り込んでる
             };
-        }
-        else{
-            $selectedprefsName = [];
-        }
 
 
-        return view('ryojo.textform')->with('memory',$memory)->with('tags',$tags)
+        return view('ryojo.ud-textform')->with('memory',$memory)->with('tags',$tags)
                                     ->with('Tohokuprefs',$Tohokuprefs)
                                     ->with('Kantoprefs',$Kantoprefs)->with('Chubuprefs',$Chubuprefs)
                                     ->with('Kinkiprefs',$Kinkiprefs)->with('Chugokuprefs',$Chugokuprefs)

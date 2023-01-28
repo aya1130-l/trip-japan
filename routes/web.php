@@ -36,6 +36,8 @@ Route::middleware(['auth','verified'])->group(function() {
     Route::put('register', [RegisteredUserController::class, 'store'])->name('register');
 
     Route::get('/ryojo/form', \App\Http\Controllers\Ryojo\FormController::class)->name('ryojo.form');
+    Route::post('/ryojo/imgform',\App\Http\Controllers\Ryojo\FormImgController::class)->name('ryojo.imgform');
+    Route::get('/ryojo/imgform',\App\Http\Controllers\Ryojo\ValFormImgController::class)->name('ryojo.val.imgform');//バリデーション用ルート
     Route::post('/ryojo/confirm', \App\Http\Controllers\Ryojo\FormConfirmController::class)->name('ryojo.confirm');
     Route::get('/ryojo/revise', \App\Http\Controllers\Ryojo\PostReviseController::class)->name('ryojo.revise');
     Route::post('/ryojo/create', \App\Http\Controllers\Ryojo\CreateController::class)->name('ryojo.create');

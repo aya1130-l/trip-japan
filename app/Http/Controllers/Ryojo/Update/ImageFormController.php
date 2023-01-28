@@ -25,7 +25,7 @@ class ImageFormController extends Controller
         }
 
         $memory = Memory::where('id',$memoryId)->firstOrFail();//編集中のmemory
-        return view('ryojo.imageform')->with('memory',$memory);
+        return view('ryojo.ud-imageform')->with('memory',$memory);
 
     }
 

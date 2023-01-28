@@ -121,55 +121,55 @@ class RyojoService
     {
             foreach($images as $image) 
                 {
-                    $name = $this->imageManager->save($image);//任意のファイル名で画像保存後、フルパス(publicId)を返す
-                    $imagesName[] = $name;
+                    $path = $this->imageManager->save($image);//任意のファイル名で画像保存後、フルパス(publicId)を返す
+                    $imagesPath[] = $path;
                  } 
-            return  $imagesName;    
+            return  $imagesPath;    
     }
 
     //投稿修正時imageを削除
-    public function tmpimgdelete($newImagesName)
+    public function tmpimgdelete($newImagesPath)
     {
-            foreach($newImagesName as $newImageName){
-                $this->imageManager->delete($newImageName);
-        }
+            foreach($newImagesPath as $newImagePath){
+                $this->imageManager->delete($newImagePath);
+            }
     }
         
 
     //投稿
-    public function saveMemory(string $title, string $content, int $userId, array $newImagesName, array $prefsName, array $tagsId)
+    public function saveMemory(string $title, $content, int $userId, array $newImagesPath, array $prefsName, array $tagsId)
     {
-        DB::transaction(function () use ($title, $content, $userId, $newImagesName, $prefsName, $tagsId){ //transactionはクロージャ使用する必要があるらしい
+        DB::transaction(function () use ($title, $content, $userId, $newImagesPath, $prefsName, $tagsId){ //transactionはクロージャ使用する必要があるらしい
             $memory = new Memory;
             $memory->title = $title;
             $memory->content =  $content;
             $memory->user_id = $userId;
             $memory->save();
             
-            foreach($newImagesName as $newImageName)
+            foreach($newImagesPath as $newImagePath)
              { 
                 $imageModel = new Image;
-                $imageModel->name = $newImageName;//cloudinaryにおける画像ファイルのフルパス(publicId)
+                $imageModel->name = $newImagePath;//cloudinaryにおける画像ファイルのフルパス(publicId)
                 $imageModel->save();
                 $memory->images()->attach($imageModel->id); //新たな紐付け
-            }
+             }
             
                 //memory保存後にtagを中間テーブルへ
-                $memory->tags()->attach($tagsId); //中間テーブルにデータ追加、引数は挿入先のID、重複可能、
-            
-                //memory保存後にprefectureを中間テーブルへ
-                $prefsId = [];
-                foreach($prefsName as $prefName)
-                {
-                    $pref = Prefecture::where('prefectures',$prefName)->firstOrFail();
-                    $prefsId[] = $pref->id;
-                }
-                $memory->prefectures()->attach($prefsId);
+            $memory->tags()->attach($tagsId); //中間テーブルにデータ追加、引数は挿入先のID、重複可能、
+        
+            //memory保存後にprefectureを中間テーブルへ
+            $prefsId = [];
+            foreach($prefsName as $prefName)
+            {
+                $pref = Prefecture::where('prefectures',$prefName)->firstOrFail();
+                $prefsId[] = $pref->id;
+            }
+            $memory->prefectures()->attach($prefsId);
             });
     }
 
      //投稿更新(画像変更なし)
-     public function textupdateMemory(int $memoryId, string $title, string $content, int $userId, array $prefsName, array $tagsId)
+     public function textupdateMemory(int $memoryId, string $title, $content, int $userId, array $prefsName, array $tagsId)
      {
          DB::transaction(function () use ($memoryId, $title, $content, $userId, $prefsName, $tagsId) {
              $memory = Memory::where('id', $memoryId)->firstOrFail();
@@ -194,9 +194,9 @@ class RyojoService
      }
 
     //投稿更新(画像変更あり)
-    public function imageupdateMemory(int $memoryId, string $title, string $content, int $userId, array $newImagesName, array $prefsName, array $tagsId)
+    public function imageupdateMemory(int $memoryId, string $title, $content, int $userId, array $newImagesPath, array $prefsName, array $tagsId)
     {
-        DB::transaction(function () use ($memoryId, $title, $content, $userId, $newImagesName, $prefsName, $tagsId) {
+        DB::transaction(function () use ($memoryId, $title, $content, $userId, $newImagesPath, $prefsName, $tagsId) {
             $memory = Memory::where('id', $memoryId)->firstOrFail();
             $memory->title = $title; 
             $memory->content =  $content;
@@ -213,10 +213,10 @@ class RyojoService
             });
 
             //新規の画像保存
-             foreach($newImagesName as $newImageName)
+             foreach($newImagesPath as $newImagePath)
              { 
                 $imageModel = new Image;
-                $imageModel->name = $newImageName;
+                $imageModel->name = $newImagePath;
                 $imageModel->save();
                 $memory->images()->attach($imageModel->id); //新たな紐付け
             }
