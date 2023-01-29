@@ -22,7 +22,7 @@
                     </div>
                     <div class="m-auto mt-8 w-5/6">
                         <p class="text-gray-800">content:</p>
-                        <textarea name="content" placeholder="1000字まで" class="block border-2 border-gray-300 w-full h-40 rounded resize-none">{{ $content }}</textarea>
+                        <textarea name="content" placeholder="旅の思い出を綴りましょう" class="block border-2 border-gray-300 w-full h-40 rounded resize-none">{{ $content }}</textarea>
                     </div> 
                 @endif
                 

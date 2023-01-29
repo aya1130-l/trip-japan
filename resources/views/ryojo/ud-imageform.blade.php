@@ -4,12 +4,10 @@
         <div class="m-auto mt-4 w-5/6">
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
         </div>
-        <form action="{{ route('ryojo.update.imageconfirm',['memoryId' => $memory->id]) }}" method="post" enctype="multipart/form-data">
-            @csrf
             <div class="my-12 text-center">
                 <x-ryojo.form.images></x-ryojo.form.images>
             </div>
-    </div>
+        </div>
     <button type="submit" onclick="postImg()" class="block w-1/2 md:w-1/4 h-12 m-auto my-20 bg-[#001a1a] hover:bg-[#1e3333] text-center text-white rounded-lg">次へ</button>
 </x-layoutgray>
 
@@ -42,7 +40,7 @@ async function postImg(){
     const ImgFiles = await setImg();
 
     const form = document.createElement("form");
-    form.action = "{{ route('ryojo.confirm') }}";
+    form.action = "{{ route('ryojo.update.imageconfirm',['memoryId' => $memory->id]) }}";
     form.method = "POST";
     form.enctype="multipart/form-data";
 

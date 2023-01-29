@@ -61,7 +61,7 @@ class ImageConfirmController extends Controller
                                         ->with('content',$content)->with('userId',$userId)
                                         ->with('tags',$tags)->with('prefs',$prefs)
                                         ->with('newImages',$newImages)
-                                        ->with('newImagesName',$newImagesName);
+                                        ->with('newImagesPath',$newImagesPath);
 
     }
 }
