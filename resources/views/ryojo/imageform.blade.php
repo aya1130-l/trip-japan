@@ -5,7 +5,7 @@
             <x-auth-validation-errors class="mb-4" :errors="$errors" />
         </div>
         <div class="m-auto my-8 w-5/6">
-            <x-ryojo.form.iPhoneimages></x-ryojo.form.iPhoneimages>
+            <x-ryojo.form.images></x-ryojo.form.images>
         </div>
     </div>
     <button type="button" onclick="postImg()" class="block md:w-2/5 w-[200px] h-12 mx-auto mt-20 mb-8 bg-[#001a1a] hover:bg-[#1e3333] text-white rounded-lg">投稿内容を確認する</button>         
