@@ -10,7 +10,7 @@
                 <x-ryojo.form.images></x-ryojo.form.images>
             </div>
     </div>
-    <button type="submit" class="block w-1/2 md:w-1/4 h-12 m-auto my-20 bg-[#001a1a] hover:bg-[#1e3333] text-center text-white rounded-lg">次へ</button>
+    <button type="submit" onclick="postImg()" class="block w-1/2 md:w-1/4 h-12 m-auto my-20 bg-[#001a1a] hover:bg-[#1e3333] text-center text-white rounded-lg">次へ</button>
 </x-layoutgray>
 
 <script>
