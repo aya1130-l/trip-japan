@@ -16,6 +16,6 @@ class MypageFormController extends Controller
     public function __invoke(Request $request)
     {
         $user = $request->user();
-        return view('ryojo.mypageupdate')->with('user',$user);
+        return view('ryojo.ud-mypage')->with('user',$user);
     }
 }
