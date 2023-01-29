@@ -62,7 +62,7 @@
 
                         <div class="md:w-2/5">
                             @foreach($bookmarkMemory->images as $image)
-                                <img alt="{{ $image->name }}" class="object-contain m-auto md:mt-2 w-[250px]" src="{{ asset('storage/images/memory/' . $image->name) }}"> 
+                                <img alt="{{ $image->name }}" class="object-contain m-auto md:mt-2 w-[250px]" src="{{ image_url($image->name) }}"> 
                                 @break
                             @endforeach
                         </div>
