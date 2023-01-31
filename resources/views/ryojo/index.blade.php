@@ -259,12 +259,13 @@
     </div>
 </x-layoutgray>
 
+@push('css')
 <style>
-    [x-cloak] { display: none !important;}
+    [x-cloak] { display: none !important; }
 </style>
+@endpush
 
-<script>
-    
+<script>   
 window.addEventListener('pageshow',()=>{
 	if(window.performance.navigation.type==2) location.reload();
 });
