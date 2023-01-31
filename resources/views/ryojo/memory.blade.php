@@ -64,8 +64,8 @@
 
                 <p class="mx-2 mt-3 break-words whitespace-pre-wrap text-gray-800">{{ $memory->content }}</p>  
 
-                <div class="flex justify-start items-middle mt-8 mb-12">
-                    <div x-data="ajax()" class="pr-5 whitespace-nowrap break-words truncate">
+                <div class="flex justify-end items-middle mt-8 mb-2 w-3/4">
+                    <div x-data="ajax()" class="pr-5 whitespace-nowrap break-words truncate w-full">
                         @if(in_array($memory->id,$bookmarkMemoriesId,true))<!--お気に入りされている状態-->
                             <i class="fas fa-heart cursor-pointer text-red-500 ml-1" @click="createPost" id="{{ $memory->id }}"></i>
                             <span class="text-[14px] text-gray-600">お気に入り{{ $memory->bookmarks_count }}</span>
@@ -76,23 +76,23 @@
                     </div>
 
                     @if(\Illuminate\Support\Facades\Auth::id() === $memory->user_id)
-                        <a class="flex px-5 whitespace-nowrap break-words truncate mt-1" href="{{ route('ryojo.update.textform',['memoryId' => $memory->id]) }}">
-                            <i class="fa fa-edit text-gray-600"></i>
-                            <span class="text-[14px] text-gray-600">編集する</span>
-                        </a>
+                    <a class="block whitespace-nowrap break-words truncate w-full" href="{{ route('ryojo.update.textform',['memoryId' => $memory->id]) }}">
+                        <i class="fa fa-edit text-gray-600"></i>
+                        <span class="text-[14px] text-gray-600">編集する</span>
+                    </a>
                         
-                        <form action="{{ route('ryojo.delete',['memoryId' => $memory->id]) }}" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <label for="delete" class="cursor-pointer px-5 whitespace-nowrap break-words truncate">                                
-                                <button type="submit" id="delete" class="text-[14px] text-gray-600"><i class="fa fa-trash text-gray-600"></i></button>
-                                <span id="delete" class="text-[14px] text-gray-600">削除する</span>
-                            </label>
-                        </form>
+                    <form action="{{ route('ryojo.delete',['memoryId' => $memory->id]) }}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <label for="delete" class="cursor-pointer whitespace-nowrap break-words truncate w-full">                                
+                            <button type="submit" id="delete" class="text-[14px] text-gray-600"><i class="fa fa-trash text-gray-600"></i></button>
+                            <span id="delete" class="text-[14px] text-gray-600">削除する</span>
+                        </label>
+                    </form>
                     @else
-                    @endif
-                    <div class="ml-auto text-gray-800 text-sm">{{ $memory->created_at }}</div>
-                </div>                                    
+                    @endif                  
+                </div>  
+                <p class="mb-6 text-right text-gray-800 text-sm">{{ $memory->created_at }}</p>                                  
                 </div>
             </div>                                
             </div> 
