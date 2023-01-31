@@ -92,7 +92,7 @@ function previewImg(obj){
             const ctx = canvas.getContext('2d');
             //どのサイズで保存するか
             canvas.width = 400;
-            canvas.height = 300;
+            canvas.height = 400;
             const canvasWidth = canvas.width;
             const canvasHeight = canvas.height;
             const canvasAspect = canvasWidth/canvasHeight;
