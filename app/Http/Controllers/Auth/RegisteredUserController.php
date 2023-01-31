@@ -41,14 +41,14 @@ class RegisteredUserController extends Controller
         ]);
 
 
-        $user = User::create([
+        $user = User::create([//UserはMustVerifyEmailをimplementsしてある
             'email' => $request->email,
             'password' => Hash::make($request->password),
-        ]);
+        ]);//createの戻り値はモデルオブジェクト
 
         Auth::login($user);//userインスタンスを現在ログイン中のuserに
 
-        event(new Registered($user));//$userがMustVerifyEmailのインスタンス
+        event(new Registered($user,$remember = true));
         return redirect()->route('verification.notice');//認証されていないなら確認mail、しているならHOMEに返す
     }
 
