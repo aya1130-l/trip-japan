@@ -21,12 +21,11 @@ class VerifyEmailController extends Controller //確認メールのリンク踏�
             return redirect()->intended(RouteServiceProvider::HOME.'?verified=1');//入力されていればHOMEへ
         }
 
-        elseif ($request->user()->markEmailAsVerified()) {//save()の戻り値はboolean、saveが成功したらtrue
-            event(new Verified($request->user()));//Verifiedに対応するリスナーは？
-            return view('ryojo.home');//認証できたから本登録へ
+        else{//save()の戻り値はboolean、saveが成功したらtrue
+            $request->fulfill();
+            //event(new Verified($request->user()));//Verifiedに対応するリスナーは？
+            return view('auth.register');//認証できたから本登録へ
         }
-        //markEmailAsVerifiedの中身:public function markEmailAsVerified(){return $this->forceFill(['email_verified_at' => $this->freshTimestamp(),])->save();}
-
-        
+        //markEmailAsVerifiedの中身:public function markEmailAsVerified(){return $this->forceFill(['email_verified_at' => $this->freshTimestamp(),])->save();}    
     }
 }
