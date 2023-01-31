@@ -46,9 +46,9 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);//createの戻り値はモデルオブジェクト
 
-        Auth::login($user);//userインスタンスを現在ログイン中のuserに
+        Auth::login($user,$remember = true);//userインスタンスを現在ログイン中のuserに
 
-        event(new Registered($user,$remember = true));
+        event(new Registered($user));
         return redirect()->route('verification.notice');//認証されていないなら確認mail、しているならHOMEに返す
     }
 
