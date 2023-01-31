@@ -23,9 +23,9 @@ class VerifyEmailController extends Controller //確認メールのリンク踏�
 
         elseif ($request->user()->markEmailAsVerified()) {//save()の戻り値はboolean、saveが成功したらtrue
             event(new Verified($request->user()));//Verifiedに対応するリスナーは？
-            return view('auth.register');//認証できたから本登録へ
+            return view('ryojo.home');//認証できたから本登録へ
         }
-        //public function markEmailAsVerified(){return $this->forceFill(['email_verified_at' => $this->freshTimestamp(),])->save();}
+        //markEmailAsVerifiedの中身:public function markEmailAsVerified(){return $this->forceFill(['email_verified_at' => $this->freshTimestamp(),])->save();}
 
         
     }
