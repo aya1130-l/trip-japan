@@ -258,11 +258,6 @@
     </div>
 </x-layoutgray>
 
-
-<style>
-    [x-cloak] { display: none; }
-</style>
-
 <script>   
 window.addEventListener('pageshow',()=>{//ブラウザバックされたらリロード
 	if(window.performance.navigation.type==2) location.reload();

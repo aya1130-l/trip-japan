@@ -138,10 +138,6 @@ function ajax() {
 }
 </script>
 
-<style>
-    [x-cloak] { display: none; }
-</style>
-
 
 
 

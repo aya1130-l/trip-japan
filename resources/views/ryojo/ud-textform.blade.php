@@ -159,9 +159,6 @@ function setPrefectures() {
     }
 </script>
 
-<style>
-    [x-cloak] { display: none; }
-</style>
 
 
 
