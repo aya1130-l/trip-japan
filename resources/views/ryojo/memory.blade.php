@@ -44,7 +44,7 @@
             <div class="mx-4 md:mx-12 mt-6">
                 <div class="flex items-end border-b border-gray-200">
                     <p class="w-5/6 mr-2 font-bold text-[28px] text-gray-800">{{ $memory->title }}</p>
-                    <a href="{{ route('ryojo.mypage') }}" class="block w-1/6 break-words ml-auto text-right text-gray-800">{{ $memory->user->name }}</a>
+                    <a href="{{ route('ryojo.userpage',['userId' => $memory->user->id]) }}" class="block w-1/6 break-words ml-auto text-right text-gray-800">{{ $memory->user->name }}</a>
                 </div>
 
                 <img src="/src/image/日本地図.png" class="inline-block w-5 h-5 mr-1">  
