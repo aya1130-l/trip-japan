@@ -8,6 +8,9 @@
     <meta name="format-detection" content="telephone=no"> 
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet"> <!--bladeファイルでは、自分がpublicディレクトリに存在しているかのように記述-->
+    <style>
+        [x-cloak] { display: none!important; }
+    </style>
     <script src="{{ mix('/js/app.js') }}" defer></script> <!--mix()でキャッシュパスティング-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <title>{{ $title }}</title>
