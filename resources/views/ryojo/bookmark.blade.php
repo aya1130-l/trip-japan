@@ -139,7 +139,7 @@ function ajax() {
         })
         .then(data => { 
             e.target.classList.toggle('text-red-500');
-            e.target.nextElementSibling.textContent = 'お気に入り'+data.bookmarksCount;
+            e.target.nextElementSibling.textContent = data.bookmarksCount;
         })
         .catch(error => {
             window.location.href = 'http://localhost/register/precheck';

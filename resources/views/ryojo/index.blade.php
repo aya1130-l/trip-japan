@@ -51,7 +51,7 @@
             <div x-data="setPrefectures()" class="my-3">
                 <a tabindex="0" @click="all = ! all" class="relative text-white bg-gray-500 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center inline-flex items-center pointer-events-auto cursor-pointer">都道府県<svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
                 <span x-text="prefectures" class="text-gray-800 text-sm"></span>
-                <div x-show="all" x-cloak>
+                <div x-cloak x-show="all">
                     <div class="bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
                         <ul class="py-1 divide-y divide-gray-100 text-sm text-gray-700 dark:text-gray-200">
                             <li class="pointer-events-auto relative">
@@ -143,13 +143,13 @@
                 </div>
             </div>
 
-            <span class="text-gray-800 text-[14px]">タグ : </span>
+            <span class="text-gray-800 text-sm">タグ : </span>
             @foreach($tags as $tag)     
                 <label for="{{ $tag->tagname }}" class="cursor-pointer whitespace-nowrap">              
                     <input type="checkbox" name="searchtag[]" value="{{ $tag->id }}" id="{{ $tag->tagname }}" 
                     <?= in_array($tag->id,$searchtags,false) ? 'checked':'' ?> class="cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                     <span id="{{ $tag->tagname }}" class="w-4 h-4 text-teal-600 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></span>
-                    <span id="{{ $tag->tagname }}" class="text-gray-800 text-[14px]">{{ $tag->tagname }}</span>
+                    <span id="{{ $tag->tagname }}" class="text-gray-800 text-sm">{{ $tag->tagname }}</span>
                 </label>
             @endforeach       
         </form>
@@ -168,25 +168,25 @@
                     <div class="md:w-3/5">
                             <img src="/src/image/日本地図.png" class="inline-block w-5 h-5 mr-1">  
                             @foreach($memory->prefectures as $prefecture)                         
-                                <span class="mr-1 text-[14px] text-gray-600 whitespace-nowrap">{{ $prefecture->prefectures }}</span>
+                                <span class="mr-1 text-sm text-gray-600 whitespace-nowrap">{{ $prefecture->prefectures }}</span>
                             @endforeach
 
                         <div>    
                             <img src="/src/image/タグ.png" class="inline-block w-5 h-5 mr-1"> 
                             @foreach($memory->tags as $tag)
-                                <span class="mt-2 mr-1 text-[14px] text-gray-600 whitespace-nowrap">{{ $tag->tagname }} </span>
+                                <span class="mt-2 mr-1 text-sm text-gray-600 whitespace-nowrap">{{ $tag->tagname }} </span>
                             @endforeach
                         </div>
                     
                         <div>
-                            <p class="mx-2 mt-3 break-words text-gray-800">{{ mb_substr($memory->content,0,50) }}...</p>  
+                            <p class="mx-2 mt-3 break-words text-gray-800 text-sm">{{ mb_substr($memory->content,0,75) }}...</p>  
                             <a href="{{ route('ryojo.memory',['memoryId' => $memory->id]) }}" class="mx-2 text-gray-800 text-[12px]">全文を表示</a><!--下からの距離に直す-->
                         </div>
                     </div>
 
                     <div class="md:w-2/5">
                         @foreach($memory->images as $image)
-                            <img alt="{{ $image->name }}" class="object-contain m-auto md:mt-2 w-[250px]" src="{{ image_url($image->name) }}"> 
+                            <img alt="{{ $image->name }}" class="object-contain m-auto md:mt-2 md:mr-4 w-[200px]" src="{{ image_url($image->name) }}"> 
                             @break
                         @endforeach
                     </div>
@@ -211,7 +211,7 @@
                         <div x-data="{ open : false }">
                             <button @click="open = true" type="submit" class="text-[14px] text-gray-600"><i class="fa fa-trash text-gray-600"></i></button>
                                 <!--delete確認モーダル-->
-                                <div x-show="open" class="z-30 fixed top-0 left-0 w-screen h-screen" x-cloak>
+                                <div x-cloak x-show="open" class="z-30 fixed top-0 left-0 w-screen h-screen">
                                     <div class="top-o left-0 bg-black bg-opacity-80 w-screen h-screen">
                                         <div class="relative w-5/6 max-w-md h-1/3 m-auto bg-gray-100 border rounded-md shadow"
                                             style="top: 30vh; grid-template-rows: 4rem 1fr 6rem;">
@@ -228,8 +228,7 @@
                          </div>
                         @else
                         @endif
-
-                    <div class="ml-auto text-gray-800 text-sm">{{ $memory->created_at }}</div>
+                    <div class="ml-auto text-gray-800 text-sm mr-4">{{ $memory->created_at }}</div>
                 </div>   
             </div>                               
         </div>           
@@ -259,14 +258,13 @@
     </div>
 </x-layoutgray>
 
-@push('css')
+
 <style>
-    [x-cloak] { display: none !important; }
+    [x-cloak] { display: none !important;}
 </style>
-@endpush
 
 <script>   
-window.addEventListener('pageshow',()=>{
+window.addEventListener('pageshow',()=>{//ブラウザバックされたらリロード
 	if(window.performance.navigation.type==2) location.reload();
 });
 
@@ -312,6 +310,3 @@ function ajax() {
     }
 }//thenの代わりにasyncとawaitを使って記述することもできる
 </script>
-
-
-

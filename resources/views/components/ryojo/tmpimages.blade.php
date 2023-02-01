@@ -4,7 +4,7 @@
 
 @if(count($newImagesPath) > 0)
 <div class="mt-8">
-    <div class="hscroll flex items-center justify-center mt-2">
+    <div class="hscroll flex items-center justify-center">
 		<i class="left arrow cursor-pointer fa fa-chevron-left md:mr-10 mr-5 text-gray-500 md:text-[50px] text-[20px]" aria-hidden="true"></i><!--矢印-->
         <ul class="w-[250px] text-[0px]">
             @foreach($newImagesPath as $newImagePath)
@@ -38,13 +38,10 @@
 	scroll-behavior:smooth;
 }
 
-
 .hscroll li {
 	list-style:none;
 	display:inline-block;
 }
-
-
 
 @media screen and (max-width:480px) {
 	.hscroll ul {

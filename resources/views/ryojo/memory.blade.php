@@ -64,7 +64,7 @@
 
                 <p class="mx-2 mt-3 break-words whitespace-pre-wrap text-gray-800">{{ $memory->content }}</p>  
 
-                <div class="flex justify-end items-middle mt-8 mb-2 w-3/4">
+                <div class="flex justify-end items-middle mt-8 mb-2 md:w-3/4">
                     <div x-data="ajax()" class="pr-5 whitespace-nowrap break-words truncate w-full">
                         @if(in_array($memory->id,$bookmarkMemoriesId,true))<!--お気に入りされている状態-->
                             <i class="fas fa-heart cursor-pointer text-red-500 ml-1" @click="createPost" id="{{ $memory->id }}"></i>

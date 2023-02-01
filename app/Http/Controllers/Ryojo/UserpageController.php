@@ -21,7 +21,8 @@ class UserpageController extends Controller
         $userMemories = $ryojoservice->getuserMemories($userId);
         $bookmarkMemoriesId = array();
 
-        $bookmarks = $ryojoservice->getBookmarks($userId);
+        $loginUserId = $request->user()->id;
+        $bookmarks = $ryojoservice->getBookmarks($loginUserId);
         foreach($bookmarks as $bookmark)
             {
                 $bookmarkMemoriesId[] = $bookmark->memory_id;

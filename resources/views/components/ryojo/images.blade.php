@@ -8,7 +8,7 @@
 		<i class="left arrow cursor-pointer fa fa-chevron-left md:mr-10 mr-5 text-gray-500 md:text-[50px] text-[20px]" aria-hidden="true"></i><!--矢印-->
         <ul class="w-[250px] text-[0px]">
             @foreach($images as $image)
-		    <li><img alt="{{ $image->name }}" class="object-contain w-[250px] mt-4" src="{{ image_url($image->name) }}"></li>
+		      <li><img alt="{{ $image->name }}" class="object-contain w-[250px] mt-4" src="{{ image_url($image->name) }}"></li>
             @endforeach
 	    </ul>
 		<i class="right arrow cursor-pointer fa fa-chevron-right md:ml-10 ml-5 text-gray-500 md:text-[50px] text-[20px]" aria-hidden="true"></i><!--矢印-->
@@ -17,18 +17,18 @@
 @endif
 
 <script>
-	const leftelm =document.querySelector('.left');
-    leftelm.onclick = function () {
-        let ul = leftelm.parentNode.querySelector('ul');
-        ul.scrollLeft -= img.clientWidth;//要素の内容が左端からスクロールするピクセル数
-      };
-      
-
-    const rightelm = document.querySelector('.right');
-    rightelm.onclick = function () {
-        let ul = rightelm.parentNode.querySelector('ul');
-        ul.scrollLeft += img.clientWidth;
-      };
+document.querySelectorAll('.left').forEach(elm => {
+	elm.onclick = function () {
+		let ul = elm.parentNode.querySelector('ul');
+		ul.scrollLeft -= ul.clientWidth;
+	};
+});
+document.querySelectorAll('.right').forEach(elm => {
+	elm.onclick = function () {
+		let ul = elm.parentNode.querySelector('ul');
+		ul.scrollLeft += ul.clientWidth;
+	};
+});
 </script>
 
 <style>
@@ -53,8 +53,3 @@
 	}
 }
 </style>
-
-
-
-
-

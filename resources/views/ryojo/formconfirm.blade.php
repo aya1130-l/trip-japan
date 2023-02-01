@@ -3,8 +3,8 @@
     <p class="mt-16 text-center text-gray-800">この内容で投稿します。よろしいですか？</p>
 
     <div class="w-11/12 md:w-3/5 my-10 mx-auto border border-gray-500 border-2 rounded-lg bg-white">
-        <div class="mx-12 my-8">
-                <p class="border-b border-gray-200 mr-2 font-bold text-[36px] text-gray-800">{{ $title }}</p>
+        <div class="md:mx-12 md:my-8 mx-6 my-4">
+                <p class="border-b border-gray-200 mr-2 font-bold text-[24px] text-gray-800">{{ $title }}</p>
 
             <div class="flex mt-3">
                 <img src="/src/image/日本地図.png" class="w-5 h-5 mr-2">  
