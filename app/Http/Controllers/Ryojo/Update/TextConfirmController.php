@@ -50,9 +50,7 @@ class TextConfirmController extends Controller
             }
 
         $memory = Memory::where('id',$memoryId)->firstOrFail();
-        return view('ryojo.ud-textconfirm')->with('memory',$memory)->with('title',$title)
-                                        ->with('content',$content)->with('userId',$userId)
-                                        ->with('tags',$tags)->with('prefs',$prefs);
+        return view('ryojo.ud-textconfirm',compact('memory','title','content','userId','tags','prefs'));
 
     }
 

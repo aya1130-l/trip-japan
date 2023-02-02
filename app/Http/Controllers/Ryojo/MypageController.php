@@ -28,8 +28,6 @@ class MypageController extends Controller
                 $bookmarkMemoriesId[] = $bookmark->memory_id;
             }
 
-        return view('ryojo.mypage')->with('user',$user)
-                                    ->with('myMemories',$myMemories)
-                                    ->with('bookmarkMemoriesId',$bookmarkMemoriesId);
+        return view('ryojo.mypage',compact('user','myMemories','bookmarkMemoriesId'));
     }
 }

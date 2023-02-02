@@ -31,7 +31,6 @@ class ShowBookmarkController extends Controller
                 $bookmarkMemory = Memory::withCount('bookmarks')->where('id',$bookmarkMemoryId)->firstOrFail();
                 $bookmarkMemories[] = $bookmarkMemory;
             }
-        return view('ryojo.bookmark')->with('bookmarkMemories',$bookmarkMemories)
-                                    ->with('bookmarkMemoriesId',$bookmarkMemoriesId);
+        return view('ryojo.bookmark',compact('bookmarkMemories','bookmarkMemoriesId'));
     }
 }

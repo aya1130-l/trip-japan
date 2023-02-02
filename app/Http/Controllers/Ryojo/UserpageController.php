@@ -27,8 +27,6 @@ class UserpageController extends Controller
             {
                 $bookmarkMemoriesId[] = $bookmark->memory_id;
             }
-        return view('ryojo.userpage')->with('user',$user)
-                                    ->with('userMemories',$userMemories)
-                                    ->with('bookmarkMemoriesId',$bookmarkMemoriesId);
+        return view('ryojo.userpage',compact('user','userMemories','bookmarkMemoriesId'));
     }
 }

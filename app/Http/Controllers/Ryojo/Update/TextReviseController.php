@@ -36,13 +36,7 @@ class TextReviseController extends Controller
 
         $memory = Memory::where('id',$memoryId)->firstOrFail();
 
-        return view('ryojo.ud-textform')->with('memory',$memory)
-                                    ->with('title',$title)
-                                    ->with('content',$content)->with('tags',$tags)                          
-                                    ->with('prefs',$prefs)->with('selectedtagsId',$selectedtagsId)                                   
-                                    ->with('selectedprefsName',$selectedprefsName)->with('Tohokuprefs',$Tohokuprefs)
-                                    ->with('Kantoprefs',$Kantoprefs)->with('Chubuprefs',$Chubuprefs)
-                                    ->with('Kinkiprefs',$Kinkiprefs)->with('Chugokuprefs',$Chugokuprefs)
-                                    ->with('Shikokuprefs',$Shikokuprefs)->with('Kyusyuprefs',$Kyusyuprefs);
+        return view('ryojo.ud-textform',compact('memory','title','content','tags','prefs','selectedtagsId','selectedprefsName',
+                                                'Tohokuprefs','Kantoprefs','Chubuprefs','Kinkiprefs','Chugokuprefs','Shikokuprefs','Kyusyuprefs'));
     }
 }

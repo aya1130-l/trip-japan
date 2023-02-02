@@ -147,6 +147,7 @@ function ajax() {
             return response.json();
         })
         .then(data => { 
+            e.target.classList.toggle('text-red-500');
             e.target.nextElementSibling.textContent = data.bookmarksCount;
         })
         .catch(error => {

@@ -57,11 +57,7 @@ class ImageConfirmController extends Controller
             }
 
         $memory = Memory::where('id',$memoryId)->firstOrFail();//編集中のmemory
-        return view('ryojo.ud-imageconfirm')->with('memory',$memory)->with('title',$title)
-                                        ->with('content',$content)->with('userId',$userId)
-                                        ->with('tags',$tags)->with('prefs',$prefs)
-                                        ->with('newImages',$newImages)
-                                        ->with('newImagesPath',$newImagesPath);
+        return view('ryojo.ud-imageconfirm',compact('memory','title','content','userId','tags','prefs','newImages','newImagesPath'));
 
     }
 }

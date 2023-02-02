@@ -48,9 +48,6 @@ class FormConfirmController extends Controller
         session()->put(['title'=>$title,'content'=>$content,'userId'=>$userId,'prefsName'=>$prefsName, 
                         'tagsId'=>$tagsId,'tags'=>$tags,'prefs'=>$prefs,'newImagesPath'=>$newImagesPath]);
 
-        return view('ryojo.formconfirm')->with('title',$title)
-                                    ->with('content',$content)->with('userId',$userId)
-                                    ->with('tags',$tags)->with('prefs',$prefs)
-                                    ->with('newImagesPath',$newImagesPath);
+        return view('ryojo.formconfirm',compact('title','content','userId','tags','prefs','newImagesPath'));
     }
 }

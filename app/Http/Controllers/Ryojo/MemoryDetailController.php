@@ -33,7 +33,6 @@ class MemoryDetailController extends Controller
             }
         }
 
-        return view('ryojo.memory')->with('memory',$memory)
-                                    ->with('bookmarkMemoriesId',$bookmarkMemoriesId);
+        return view('ryojo.memory',compact('memory','bookmarkMemoriesId'));
     }
 }

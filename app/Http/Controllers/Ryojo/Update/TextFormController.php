@@ -49,12 +49,7 @@ class TextFormController extends Controller
             };
 
 
-        return view('ryojo.ud-textform')->with('memory',$memory)->with('tags',$tags)
-                                    ->with('Tohokuprefs',$Tohokuprefs)
-                                    ->with('Kantoprefs',$Kantoprefs)->with('Chubuprefs',$Chubuprefs)
-                                    ->with('Kinkiprefs',$Kinkiprefs)->with('Chugokuprefs',$Chugokuprefs)
-                                    ->with('Shikokuprefs',$Shikokuprefs)->with('Kyusyuprefs',$Kyusyuprefs)
-                                    ->with('selectedtagsId',$selectedtagsId)
-                                    ->with('selectedprefsName',$selectedprefsName);
+        return view('ryojo.ud-textform',compact('memory','tags','Tohokuprefs','Kantoprefs','Chubuprefs','Kinkiprefs','Chugokuprefs',
+                                                'Shikokuprefs','Kyusyuprefs','selectedtagsId','selectedprefsName'));
     }
 }

@@ -88,18 +88,9 @@ class IndexController extends Controller
         $memories = $query->orderBy('created_at', 'DESC')->withCount('bookmarks')->get();
         $popularMemories = Memory::withCount('bookmarks')->orderBy('bookmarks_count','desc')->limit(5)->get();
     
-        return view('ryojo.index')->with('user',$user)
-                                ->with('memories',$memories)
-                                ->with('popularMemories',$popularMemories)
-                                ->with('tags',$tags)
-                                ->with('search',$search)
-                                ->with('searchprefs',$searchprefs)
-                                ->with('searchtags',$searchtags)
-                                ->with('bookmarkMemoriesId',$bookmarkMemoriesId)
-                                ->with('Tohokuprefs',$Tohokuprefs)
-                                ->with('Kantoprefs',$Kantoprefs)->with('Chubuprefs',$Chubuprefs)
-                                ->with('Kinkiprefs',$Kinkiprefs)->with('Chugokuprefs',$Chugokuprefs)
-                                ->with('Shikokuprefs',$Shikokuprefs)->with('Kyusyuprefs',$Kyusyuprefs);
+        return view('ryojo.index',compact('user','memories','popularMemories','tags','search','searchprefs','searchtags',
+                                            'bookmarkMemoriesId','Tohokuprefs','Kantoprefs','Chubuprefs','Kinkiprefs','Chugokuprefs','Shikokuprefs','Kyusyuprefs'));
+        
     }
 }
 

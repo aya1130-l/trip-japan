@@ -35,13 +35,8 @@ class PostReviseController extends Controller
         $Shikokuprefs = $ryojoservice->getShikokuPrefs();
         $Kyusyuprefs = $ryojoservice->getKyusyuPrefs();
 
-        return view('ryojo.textform')->with('title',$title)
-                                    ->with('content',$content)->with('tags',$tags)                          
-                                    ->with('prefs',$prefs)->with('selectedtagsId',$selectedtagsId)                                   
-                                    ->with('selectedprefsName',$selectedprefsName)->with('Tohokuprefs',$Tohokuprefs)
-                                    ->with('Kantoprefs',$Kantoprefs)->with('Chubuprefs',$Chubuprefs)
-                                    ->with('Kinkiprefs',$Kinkiprefs)->with('Chugokuprefs',$Chugokuprefs)
-                                    ->with('Shikokuprefs',$Shikokuprefs)->with('Kyusyuprefs',$Kyusyuprefs);
+        return view('ryojo.textform',compact('title','content','tags','prefs','selectedtagsId','selectedprefsName',
+                                            'Tohokuprefs','Kantoprefs','Chubuprefs','Kinkiprefs','Chugokuprefs','Shikokuprefs','Kyusyuprefs'));
 
     }
 }

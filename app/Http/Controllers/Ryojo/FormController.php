@@ -29,11 +29,6 @@ class FormController extends Controller
         $title="";
         $content="";
         
-        return view('ryojo.textform')->with('tags',$tags)->with('Tohokuprefs',$Tohokuprefs)
-                                ->with('Kantoprefs',$Kantoprefs)->with('Chubuprefs',$Chubuprefs)
-                                ->with('Kinkiprefs',$Kinkiprefs)->with('Chugokuprefs',$Chugokuprefs)
-                                ->with('Shikokuprefs',$Shikokuprefs)->with('Kyusyuprefs',$Kyusyuprefs)
-                                ->with('selectedprefsName',$selectedprefsName)->with('title',$title)
-                                ->with('content',$content);
-    }
+        return view('ryojo.textform',compact('tags','Tohokuprefs','Kantoprefs','Chubuprefs','Kinkiprefs','Chugokuprefs','Shikokuprefs','Kyusyuprefs','selectedprefsName','title','content'));
+}
 }
