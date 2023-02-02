@@ -69,11 +69,14 @@ class IndexController extends Controller
                         });
                     }
 
+                $i=0;
                 foreach($searchprefs as $pref)
                 {
-                $query->whereHas('prefectures',function($query)use($pref){
-                    $query->where('prefectures',$pref);              
+                $whereHas = ($i == 0) ? 'whereHas' : 'orWhereHas';
+                $query->$whereHas('prefectures',function($query)use($pref){
+                    $query->where('prefectures',$pref);      
                     });
+                $i++;
                 }
 
                 foreach($searchtags as $tag)
