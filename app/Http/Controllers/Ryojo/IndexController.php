@@ -79,11 +79,14 @@ class IndexController extends Controller
                 $i++;
                 }
 
+                $j=0;
                 foreach($searchtags as $tag)
                 {
-                $query->whereHas('tags',function($query) use($tag){
+                $whereHas = ($j == 0) ? 'whereHas' : 'orWhereHas';
+                $query->$whereHas('tags',function($query) use($tag){
                     $query->where('id',$tag);
                     });
+                $j++;
                 }      
                         
         }
