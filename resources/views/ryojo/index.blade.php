@@ -243,7 +243,7 @@
             <a href="{{ route('ryojo.memory',['memoryId' => $popularMemory->id]) }}" class="block text-gray-800 hover:underline truncate whitespace-nowrap">{{ $popularMemory->title }}</a>
             <a href="{{ route('ryojo.userpage',['userId' => $popularMemory->user_id]) }}" class="block ml-auto text-right text-gray-800 text-[12px] hover:underline truncate whitespace-nowrap">{{ $popularMemory->user->name }}</a>
                 @foreach($popularMemory->images as $image)
-                    <img alt="{{ $image->name }}" class="object-contain m-auto md:mt-2 w-[250px]" src="{{ image_url($image->name) }}"> 
+                    <img alt="{{ $image->name }}" class="object-contain m-auto md:mt-2 w-[160px]" src="{{ image_url($image->name) }}"> 
                     @break
                 @endforeach        
         </div>
