@@ -6,7 +6,7 @@
         <i class="left arrow cursor-pointer fa fa-chevron-left md:mr-10 mr-5 text-gray-500 md:text-[50px] text-[20px]" aria-hidden="true"></i><!--矢印-->
         
         <ul id="tmpimage" class="hidden w-[250px]"></ul>
-        <img id="defaultimage" src="/src/image/プレビュー画像.png" class="w-[250px] mt-2">
+        <img id="defaultimage" src="/src/image/画像.png" class="w-[250px] mt-2">
         
         <i class="right arrow cursor-pointer fa fa-chevron-right md:ml-10 ml-5 text-gray-500 md:text-[50px] text-[20px]" aria-hidden="true"></i><!--矢印-->
     </div>
