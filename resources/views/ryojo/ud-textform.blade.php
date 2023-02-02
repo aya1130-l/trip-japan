@@ -130,8 +130,8 @@
                             <label for="{{ $tag->tagname }}" class="mr-2 cursor-pointer whitespace-nowrap">
                                 <input type="checkbox" name="tag[]" value="{{ $tag->id }}" 
                                 <?= in_array($tag->id,$selectedtagsId,false) ? 'checked':'' ?> class="cursor-pointer w-4 h-4 text-teal-600 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <span class="w-4 h-4 text-teal-600 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></span>
-                                <span class="text-gray-800 text-sm">{{ $tag->tagname }}</span>
+                                <span id="{{ $tag->tagname }}" class="w-4 h-4 text-teal-600 bg-gray-100 rounded border-gray-300 focus:ring-teal-500 dark:focus:ring-teal-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"></span>
+                                <span id="{{ $tag->tagname }}"class="text-gray-800 text-sm">{{ $tag->tagname }}</span>
                             </label>
                     @endforeach
                 </div>
