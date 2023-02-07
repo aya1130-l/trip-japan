@@ -69,27 +69,24 @@ class IndexController extends Controller
                         });
                     }
 
-                $i=0;
-                foreach($searchprefs as $pref)
-                {
-                $whereHas = ($i == 0) ? 'whereHas' : 'orWhereHas';
-                $query->$whereHas('prefectures',function($query)use($pref){
-                    $query->where('prefectures',$pref);      
+                $query->where(function($query)use($searchprefs){
+                    foreach($searchprefs as $pref)
+                    {
+                    $query->orWhereHas('prefectures',function($query)use($pref){
+                        $query->where('prefectures',$pref);      
+                        });
+                    }
                     });
-                $i++;
-                }
 
-                $j=0;
+                $query->where(function($query)use($searchtags){
                 foreach($searchtags as $tag)
                 {
-                $whereHas = ($j == 0) ? 'whereHas' : 'orWhereHas';
-                $query->$whereHas('tags',function($query) use($tag){
+                $query->orWhereHas('tags',function($query) use($tag){
                     $query->where('id',$tag);
                     });
-                $j++;
-                }      
-                        
-        }
+                }                          
+                });
+            }
         
         $memories = $query->orderBy('created_at', 'DESC')->withCount('bookmarks')->get();
         $popularMemories = Memory::withCount('bookmarks')->orderBy('bookmarks_count','desc')->limit(5)->get();
