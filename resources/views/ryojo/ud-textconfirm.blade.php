@@ -31,6 +31,6 @@
             @csrf
             <button type="submit" class="block w-1/2 md:w-2/5 h-12 px-3 mt-5 mb-10 mx-auto py-3 bg-[#001a1a] hover:bg-[#1e3333] text-center text-white rounded-lg font-bold">更新する</button>
         </form>
-        <a href="{{ route('ryojo.update.textrevise') }}" class="block w-1/2 h-12 md:w-2/5 text-center mx-auto px-3 py-3 bg-[#1e3333] hover:bg-[#001a1a] text-white font-bold rounded-lg">修正する</a>       
+        <a href="{{ route('ryojo.update.textrevise') }}" class="block w-1/2 h-12 md:w-2/5 text-center mx-auto px-3 py-3 bg-[#001a1a] hover:bg-[#1e3333] text-white font-bold rounded-lg">修正する</a>       
     </div>  
 </x-layoutgray>
