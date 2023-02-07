@@ -19,7 +19,7 @@
         </div>
             
         <div class="w-1/2 md:w-1/4 h-12 m-auto mt-20 mb-8 bg-[#001a1a] hover:bg-[#1e3333] text-center text-white rounded-lg">
-            <button type="submit" class="h-12">更新する</button>
+            <button type="submit" class="w-full h-12">更新する</button>
         </div> 
         <a href="{{ route('ryojo.index') }}" class="block w-1/2 md:w-1/4 h-12 mx-auto mb-20 py-3 bg-[#b3a7a1] hover:bg-[#ccc1b8] text-center text-white rounded-lg">TOPに戻る</a>           
 </x-layoutgray>
