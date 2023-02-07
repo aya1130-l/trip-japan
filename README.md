@@ -1,4 +1,4 @@
-<p align="center"><a href="http://ryojo-trip-japan.herokuapp.com/ryojo" target="_blank"><img src="src/image/Readme用画像" width="400"></a></p>
+<p align="center"><a href="http://ryojo-trip-japan.herokuapp.com/ryojo" target="_blank"><img src="https://user-images.githubusercontent.com/122440838/217377236-8124301a-3012-40ec-bdb9-5a3f66977204.png" width="400"></a></p>
 
 
 ## 旅情
@@ -11,7 +11,7 @@
 
 
 ## URL
-<a href="http://ryojo-trip-japan.herokuapp.com"><a>
+<a href="http://ryojo-trip-japan.herokuapp.com">http://ryojo-trip-japan.herokuapp.com<a>
 
 
 ## 機能
