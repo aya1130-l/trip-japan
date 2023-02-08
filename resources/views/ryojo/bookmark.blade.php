@@ -29,6 +29,7 @@
         @endif
     </div>
 
+    <!--memory-->
     <div class="md:absolute md:left-[20%] md:top-[4%] lg:w-[725px] md:w-3/5 mt-5 mx-4 md:mx-10 mb-20">
         @foreach($bookmarkMemories as $bookmarkMemory)
             <div class="md:mb-10 my-5 border border-gray-500 bg-white border-2 md:rounded-lg rounded-xl">
