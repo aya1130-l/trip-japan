@@ -34,7 +34,7 @@
     <ul><li>TailwindCSS</li></ul>
     <li>javascript</li>
     <ul><li>Alpine.js</li></ul>
-    <li>Docker</li>
+    <li>Docker(Laravel Sail使用)</li>
     <li>Heroku</li>
     <ul>
         <li>mailgun</li>
