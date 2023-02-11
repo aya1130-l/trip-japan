@@ -159,9 +159,9 @@
     @foreach($memories as $memory)
         <div class="md:mb-10 mb-5 border border-gray-500 bg-white border-2 md:rounded-lg rounded-xl">
             <div class="mx-5 md:mt-8 mt-6 mb-4">
-                <div class="flex items-end border-b border-gray-200">
-                    <p class="mr-2 w-4/5 font-bold text-[24px] text-gray-800 truncate">{{ $memory->title }}</p>
-                    <a href="{{ route('ryojo.userpage',['userId' => $memory->user_id]) }}" class="block ml-auto w-1/5 text-right mt-2 text-gray-800 truncate">{{ $memory->user->name }}</a>
+                <div class="items-end border-b border-gray-200">
+                    <p class="mr-2 font-bold text-[24px] text-gray-800 truncate">{{ $memory->title }}</p>
+                    <button type="button" onclick="location.href='{{ route('ryojo.userpage',['userId' => $memory->user_id]) }}'" class="block ml-auto text-right mt-2 text-gray-800 truncate">{{ $memory->user->name }}</button>
                 </div>
 
                 <div class="md:flex">    

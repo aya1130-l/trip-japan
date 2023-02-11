@@ -34,9 +34,9 @@
         @foreach($bookmarkMemories as $bookmarkMemory)
             <div class="md:mb-10 my-5 border border-gray-500 bg-white border-2 md:rounded-lg rounded-xl">
                 <div class="mx-5 md:mt-8 mt-6 md:mb-4 mb-4">
-                    <div class="flex items-end border-b border-gray-200">
+                    <div class="items-end border-b border-gray-200">
                         <p class="mr-2 w-4/5 font-bold text-[24px] text-gray-800 truncate">{{ $bookmarkMemory->title }}</p>
-                        <a href="{{ route('ryojo.userpage',['userId' => $bookmarkMemory->user_id]) }}" class="block ml-auto w-1/5 text-right mt-2 text-gray-800 truncate">{{ $bookmarkMemory->user->name }}</a>
+                        <button type="button" onclick="location.href='{{ route('ryojo.userpage',['userId' => $bookmarkMemory->user_id]) }}'" class="block ml-auto text-right mt-2 text-gray-800 truncate">{{ $bookmarkMemory->user->name }}</button>
                     </div>
 
                     <div class="md:flex">    
