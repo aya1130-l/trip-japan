@@ -43,8 +43,8 @@
         <div class="mx-4 md:mx-8 mt-5 mb-20 border border-gray-500 border-2 rounded-lg bg-white">
             <div class="mx-4 md:mx-12 mt-6">
                 <div class="items-end border-b border-gray-200">
-                    <p class="w-5/6 mr-2 font-bold text-[28px] text-gray-800">{{ $memory->title }}</p>
-                    <button type="button" onclick="location.href='{{ route('ryojo.userpage',['userId' => $memory->user_id]) }}'" class="block ml-auto text-right mt-2 text-gray-800 truncate">{{ $memory->user->name }}</button>
+                    <p class="font-bold text-[28px] text-gray-800">{{ $memory->title }}</p>
+                    <button type="button" onclick="location.href='{{ route('ryojo.userpage',['userId' => $memory->user_id]) }}'" class="block ml-auto text-right text-gray-800 truncate">{{ $memory->user->name }}</button>
                 </div>
 
                 <img src="/src/image/日本地図.png" class="inline-block w-5 h-5 mr-1">  

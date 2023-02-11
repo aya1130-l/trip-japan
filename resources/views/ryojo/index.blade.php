@@ -160,8 +160,8 @@
         <div class="md:mb-10 mb-5 border border-gray-500 bg-white border-2 md:rounded-lg rounded-xl">
             <div class="mx-5 md:mt-8 mt-6 mb-4">
                 <div class="items-end border-b border-gray-200">
-                    <p class="mr-2 font-bold text-[24px] text-gray-800 truncate">{{ $memory->title }}</p>
-                    <button type="button" onclick="location.href='{{ route('ryojo.userpage',['userId' => $memory->user_id]) }}'" class="block ml-auto text-right mt-2 text-gray-800 truncate">{{ $memory->user->name }}</button>
+                    <p class="font-bold text-[24px] text-gray-800 truncate">{{ $memory->title }}</p>
+                    <button type="button" onclick="location.href='{{ route('ryojo.userpage',['userId' => $memory->user_id]) }}'" class="block ml-auto text-right text-gray-800 truncate">{{ $memory->user->name }}</button>
                 </div>
 
                 <div class="md:flex">    
